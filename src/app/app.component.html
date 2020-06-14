@@ -1,4 +1,8 @@
 <div>
   <h1>Quotes From Intelligent life force</h1>
-  <p>This a quote from Master Yoda: {{quote}}</p>
+  <ul>
+      <li *ngFor='let quote of quotes'>
+        {{quote}}
+      </li>
+  </ul>
 </div>
