@@ -1,9 +1,10 @@
 <div>
     <h1>Quotes From Intelligent life force</h1>
     <ul>
-        <li *ngFor='let quote of quotes'>
-          {{quote.name}}
-          <app-quote-detail [quote]='quote'></app-quote-detail>
-        </li>
+        <div *ngFor='let quote of quotes;let i = index'>
+            <li>{{quote.name}}</li>
+            <button (click)='toggleDetails(i)'>View Details</button>
+            <app-quote-detail *ngIf='quote.showAuthor' [quote]='quote' (vote)='upVote($event,i)' (downvote)='downVote($event,i)' (quoteDelete)='deleteQuote($event,i)')></app-quote-detail>
+        </div>
     </ul>
   </div>
