@@ -1,17 +1,25 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <app-goal-form></app-goal-form>
+            <h2>QUOTES</h2>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <app-quote-form (addQuote)="addNewQuote($event)"></app-quote-form>
         </div>
         <div class="col">
             <h1>Quotes From Intelligent life force</h1>
             <ul>
                 <div *ngFor='let quote of quotes;let i = index'>
-                    <li>{{quote.name}}</li>
-                    <button (click)='toggleDetails(i)'>View Details</button>
-                </div>
-                <div *ngIf='quote.showAuthor'>
-                    <app-quote-detail [quote]='quote' (vote)='upVote($event,i)' (downvote)='downVote($event,i)' (quoteDelete)='deleteQuote($event,i)')></app-quote-detail>
+                    <div>
+                        <li>{{ quote.quote }}</li>
+                        <button class="btn btn-primary" (click)='toggleDetails(i)'>View Details</button>
+                    </div>
+                    <div *ngIf='quote.showDetails'>
+                        <app-quote-detail [quote]='quote' (vote)='upVote($event,i)' (downvote)='downVote($event,i)' (quoteDelete)='deleteQuote($event,i)')></app-quote-detail>
+                    </div>
                 </div>
             </ul>
         </div>

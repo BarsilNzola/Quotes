@@ -8,8 +8,8 @@ import { Quote } from '../quote';
 })
 export class QuoteComponent implements OnInit {
 
-  quotes:Quote[] = [
-    new Quote(1,'Named must be your fear before banish it you can.','Master Yoda','John Nzola',0,0,new Date(2020,6,15)),
+  quotes: Quote[] = [
+    new Quote(1, 'Named must be your fear before banish it you can.','Master Yoda','John Nzola',0,0,new Date(2020,6,15)),
     new Quote(2,'We shall destroy the ones called the turtles who call themselves the turtles.','Krang','John Nzola',0,0,new Date(2020,6,15)),
   ];
   preNum:number
@@ -17,7 +17,7 @@ export class QuoteComponent implements OnInit {
   count:number
 
   toggleDetails(index){
-    this.quotes[index].showAuthor = !this.quotes[index].showAuthor;
+    this.quotes[index].showDetails = !this.quotes[index].showDetails;
   }
 
   upVote(upvote,index){
@@ -52,7 +52,12 @@ export class QuoteComponent implements OnInit {
     return  this.preNum
   }
 
-  
+  addNewQuote(quote){
+    let quoteLength = this.quotes.length;
+    quote.id = quoteLength+1;
+    quote.actualDate = new Date(quote.actualDate)
+    this.quotes.push(quote)
+  }
   constructor(){}
 
   ngOnInit(){
