@@ -2,7 +2,7 @@
     <h1>Quotes From Intelligent life force</h1>
     <ul>
         <div *ngFor='let quote of quotes;let i = index'>
-            <li>{{quote.name}}</li>
+            <li appHighlight *ngIf="highestUpvote()===quote.upvotes && quote.upvotes>0" >{{quote.name}}</li>
             <button (click)='toggleDetails(i)'>View Details</button>
             <app-quote-detail *ngIf='quote.showAuthor' [quote]='quote' (vote)='upVote($event,i)' (downvote)='downVote($event,i)' (quoteDelete)='deleteQuote($event,i)')></app-quote-detail>
         </div>
